@@ -4,10 +4,11 @@ import {Films, Films as FilmsType} from '../../redux/App/types';
 import {createStructuredSelector} from 'reselect';
 import {RootState} from '../../redux/types';
 import {makeSelectFilms} from '../../redux/App/selectors';
-import FilmList from '../../components/FilmList';
 import Loading from '../../components/Loading';
 import {getFilms} from '../../api/films.api';
 import {setFilms} from '../../redux/App/actions';
+import FilmList from '../../components/FilmList';
+import ReorderButton from '../ReorderButton';
 
 interface SelectorProps {
     readonly films: FilmsType;
@@ -26,10 +27,19 @@ const FilmsList = (): JSX.Element => {
             //TODO handle error
             dispatch(setFilms([]));
         })
-    },[])
+    }, [])
     const {films} = useAppSelector(structureSelector);
 
-    return !!films ? <FilmList films={films}/> : <Loading/>
+    if (!films) {
+        return <Loading/>
+    } else {
+        return (
+            <>
+                <FilmList films={films}/>
+                <ReorderButton/>
+            </>
+        )
+    }
 }
 
 export default FilmsList;
