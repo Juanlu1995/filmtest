@@ -1,6 +1,7 @@
 import {AppState} from './types';
 import {AppActionTypes as ActionTypes} from './actionTypes';
 import {AnyAction} from '@reduxjs/toolkit';
+import {shuffleFilms} from './utils';
 
 const initialState: AppState = {
     authors: [],
@@ -14,6 +15,11 @@ const appReducer = (state = initialState, action: AnyAction): AppState => {
             return {
                 ...state,
                 films: payload,
+            };
+        case ActionTypes.REORDER_FILMS:
+            return {
+                ...state,
+                films: shuffleFilms([...state.films]),
             };
         default:
             return {...state};
