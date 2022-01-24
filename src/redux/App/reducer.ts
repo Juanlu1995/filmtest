@@ -1,7 +1,7 @@
 import {AppState} from './types';
 import {AppActionTypes as ActionTypes} from './actionTypes';
 import {AnyAction} from '@reduxjs/toolkit';
-import {shuffleFilms} from './utils';
+import {duplicateMovieById, shuffleFilms} from './utils';
 
 const initialState: AppState = {
     authors: [],
@@ -21,6 +21,11 @@ const appReducer = (state = initialState, action: AnyAction): AppState => {
                 ...state,
                 films: shuffleFilms([...state.films]),
             };
+        case ActionTypes.DUPLICATE_MOVIE:
+            return {
+                ...state,
+                films: duplicateMovieById([...state.films], payload)
+            }
         default:
             return {...state};
     }
