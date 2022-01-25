@@ -1,11 +1,11 @@
-import {AppState} from './types';
+import {AppState, Film} from './types';
 import {AppActionTypes as ActionTypes} from './actionTypes';
 import {AnyAction} from '@reduxjs/toolkit';
-import {changeRateToFilms, duplicateMovieById, shuffleFilms} from './utils';
+import {changeRateToFilms, duplicateMovieById, removeFilm, shuffleFilms} from './utils';
 
 const initialState: AppState = {
     authors: [],
-    films: []
+    films: [],
 };
 
 const appReducer = (state = initialState, action: AnyAction): AppState => {

@@ -21,4 +21,5 @@ const FilmInList = ({film}: Props): JSX.Element => {
         </ListItem>
     )
 }
+
 export default React.memo(FilmInList);
