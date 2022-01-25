@@ -6,9 +6,9 @@ export type Author = {
 export type Authors = Author[]
 
 export type Film = {
-    readonly id: string; //hashed id
+    readonly id: string;
     readonly name: string;
-    readonly rate: number;//0 - 10
+    readonly rate: number;
     readonly author: Author;
 };
 

@@ -9,6 +9,7 @@ import {getFilms} from '../../api/films.api';
 import {setFilms} from '../../redux/App/actions';
 import FilmList from '../../components/FilmList';
 import ReorderButton from '../ReorderButton';
+import ChangeRateButton from '../ChangeRateButton';
 
 interface SelectorProps {
     readonly films: FilmsType;
@@ -36,7 +37,10 @@ const FilmsList = (): JSX.Element => {
         return (
             <>
                 <FilmList films={films}/>
-                <ReorderButton/>
+                <div>
+                    <ReorderButton/>
+                    <ChangeRateButton/>
+                </div>
             </>
         )
     }
